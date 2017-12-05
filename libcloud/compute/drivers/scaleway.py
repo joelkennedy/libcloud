@@ -383,7 +383,7 @@ class ScalewayNodeDriver(NodeDriver):
                 for size in SCALEWAY_INSTANCE_TYPES]
 
     def list_images(self, region=None):
-        response = self.connection.request('/images', region=region)
+        response = self.connection.request('/images?per_page=100', region=region)
         images = response.object['images']
         return [self._to_image(image) for image in images]
 
